@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>タスク管理アプリ</title>
+</head>
+<body>
+<h1>タスク一覧</h1>
+<a href="{{ url_for('add_task') }}">タスクを追加</a> <ul>
+       {% for task in tasks %}
+<li>
+    {{ task.title }} ({{ "完了" if task.completed else "未完了" }}) 
+    <a href="{{ url_for('edit_task', task_id=task.id) }}">編集</a> 
+    <a href="{{ url_for('delete_task', task_id=task.id) }}">削除</a>
+</li>
+{% endfor %}
+   </ul>
+</body>
+</html>
